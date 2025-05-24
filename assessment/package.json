@@ -1,7 +1,7 @@
 {
-  "name": "notesapp",
+  "name": "notes-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Tests for mern_xblogapp",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
