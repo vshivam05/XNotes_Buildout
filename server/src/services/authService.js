@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 
 const tokenGenerate = (user) => {
   const token = jwt.sign(
-    { userId: user._id, email: user.email },
+    { userId: user._id, email: user.email, role: user.role },
     process.env.JWT_SECRET,
     { expiresIn: "1h" }
   );
@@ -35,7 +35,7 @@ export const RegisterService = async (data) => {
 
     const token = tokenGenerate(newRegister);
 
-    // const { password: _, ...safeUser } = newRegister._doc;
+    console.log(newRegister);
 
     const userToreturn = {
       name: newRegister.name,
