@@ -5,10 +5,10 @@ import jwt from "jsonwebtoken";
 const tokenGenerate = (user) => {
   const token = jwt.sign(
     { userId: user._id, email: user.email, role: user.role },
-    process.env.JWT_SECRET,
-    { expiresIn: "1h" }
+    process.env.JWT_SECRET
   );
 
+  
   return token;
 };
 
@@ -44,7 +44,7 @@ export const RegisterService = async (data) => {
     return {
       message: "User registered successfully",
       token: token,
-      user: userToreturn,
+      user: userToreturn, 
     };
   } catch (e) {
     return e;

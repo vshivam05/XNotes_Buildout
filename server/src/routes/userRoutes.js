@@ -1,9 +1,10 @@
 
 import express from "express";
 
-// import { register, login } from "../controllers/authController.js";
+import fetchUser from "../controllers/userController.js"
+
 const router = express.Router();
 
-
+router.get("/", fetchUser );
 
 export default router;

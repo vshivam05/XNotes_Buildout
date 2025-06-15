@@ -6,7 +6,7 @@ export const register = async (req, res) => {
 
     const result = await RegisterService({ name, email, password });
 
-    res.status(201).send(result);
+    return res.status(201).json(result);
   } catch (e) {
     console.log(e);
     return e;
