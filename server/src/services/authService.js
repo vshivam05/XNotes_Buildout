@@ -8,7 +8,6 @@ const tokenGenerate = (user) => {
     process.env.JWT_SECRET
   );
 
-  
   return token;
 };
 
@@ -21,10 +20,12 @@ export const RegisterService = async (data) => {
   // console.log(hashedPassword);
   console.log("from the authservice", data);
 
-  const existingUser = await Auth.findOne({ $or: [{ email }, { name }] });
-  if (existingUser) {
-    return "User with this email or name already exists";
-  }
+  // const existingUser = await Auth.findOne({ $or: [{ email }, { name }] });
+  // if (existingUser) {
+  //   return res
+  //     .status(404)
+  //     .json({ error: "User with this email or name already exists" });
+  // }
 
   try {
     const newRegister = await Auth.create({
@@ -44,7 +45,7 @@ export const RegisterService = async (data) => {
     return {
       message: "User registered successfully",
       token: token,
-      user: userToreturn, 
+      user: userToreturn,
     };
   } catch (e) {
     return e;

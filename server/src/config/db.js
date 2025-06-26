@@ -3,10 +3,10 @@ import mongoose from "mongoose";
 export const dbConnect = async () => {
   const dbUrl = process.env.DB_URL;
 
-  if (!dbUrl) {
-    console.error("❌ DB_URL is undefined. Check your .env file.");
-    return;
-  }
+  // if (!dbUrl) {
+  //   console.error("❌ DB_URL is undefined. Check your .env file.");
+  //   return;
+  // }
 
   console.log("Connecting to:", dbUrl);
 

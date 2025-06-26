@@ -1,14 +1,19 @@
 import express from "express";
 import cors from "cors";
+import { dbConnect } from "./config/db.js";
+import routes from "./routes/index.js";
 
 const app = express();
-import { dbConnect } from "./config/db.js";
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+  })
+);
+
 app.use(express.json());
-import routes from "./routes/index.js";
-dbConnect();
-app.use(cors());
 
 app.use("/api", routes);
-
 
 export default app;
