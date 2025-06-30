@@ -7,8 +7,8 @@ export const register = async (data) => {
     console.log(data);
     const result = await axios.post(`${API_URL}/auth/register`, data);
 
-    // console.log(result)
-    return result.data;
+    console.log("registered",result)
+    return result;
   } catch (error) {
     console.log(error);
     throw error;

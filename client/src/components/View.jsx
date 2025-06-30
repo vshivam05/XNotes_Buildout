@@ -69,7 +69,7 @@ const View = () => {
             </div>
 
             <div className="buttons flex flex-row p-2 gap-2 justify-end">
-              <button onClick={handleEditSubmit}
+              <button type="submit" onClick={handleEditSubmit}
                 className={edit ? "p-2 px-4 border border-indigo-500 text-blue-400 rounded-md" : "p-2 px-4 border border-indigo-500 text-red-400 rounded-md"}
 
               >

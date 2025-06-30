@@ -6,15 +6,15 @@ import NoteCard from "./NoteCard";
 import View from "./View";
 const Notes = () => {
   // const [formData, setFormData] = useState({ title: "", description: "" });
-  const {
-    addNote,
-    setNote,
-    setNotes,
-    notes,
-    fetchNotes,
-    isEditing,
-    setIsEditing,
-  } = useNote();
+  const token = localStorage.getItem("token");
+
+  const { addNote, setNote, setNotes, notes, fetchNotes, isEditing } =
+    useNote();
+
+  useEffect(() => {
+    console.log("token detected");
+    fetchNotes();
+  }, [token]);
 
   const handleChanges = (e) => {
     console.log(e.target.name, e.target.value);
@@ -36,12 +36,11 @@ const Notes = () => {
     <>
       <div className=" w-screen  overflow-hidden my-2  px-4  md:w-full md:mx-auto md:px-0">
         <div className="notes-section md:max-w-full flex flex-col   rounded-2xl shadow-lg md:px-40  my-10">
-          
-    { isEditing && (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <View />
-    </div>
-  )}
+          {isEditing && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+              <View />
+            </div>
+          )}
 
           <div className="flex flex-row w-full gap-2 py-4">
             <input
@@ -49,7 +48,10 @@ const Notes = () => {
               placeholder="Search notes..."
               className="  p-2 rounded-md w-4/5"
             />
-            <button className="p-2 rounded-md w-1/5 border text-white bg-gray-800 border-indigo-500">
+            <button
+              type="submit"
+              className="p-2 rounded-md w-1/5 border text-white bg-gray-800 border-indigo-500"
+            >
               Search
             </button>
           </div>
@@ -102,12 +104,7 @@ const Notes = () => {
             {notes.map((note, index) => (
               // <h1 key={index}>{console.log(note.title)}</h1>
               // Assuming each note has a 'title' field
-              <NoteCard
-                data={note}
-                key={index}
-                handleDelete={handleDelete}
-               
-              />
+              <NoteCard data={note} key={index} handleDelete={handleDelete} />
             ))}
           </div>
         </div>

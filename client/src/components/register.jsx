@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import { register } from "../Services/api";
 import { Link, useNavigate } from "react-router-dom";
+import {useAuth} from "../context/AuthContext"
 const Register = () => {
   const navigate = useNavigate();
+  const {login} = useAuth();
+  
   const [formData, setFormData] = useState({
     email: "",
     password: "",
     name: "",
   });
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -20,8 +24,16 @@ const Register = () => {
     try {
       const res = await register(formData);
       console.log("registered successfully", res);
-          navigate("/");
+       if (res.status == 201) {
+    //     localStorage.setItem("user", JSON.stringify(res.data.user));
+    //     localStorage.setItem("token", res.data.token);
+    //     setFormData({email: "",
+    // password: ""});
 
+    login(res.data.token, res.data.user);
+    navigate("/notes")
+
+      }
     } catch (error) {
       alert(error);
     }
@@ -84,7 +96,7 @@ const Register = () => {
               />
             </div>
 
-            <button className="w-full bg-gray-600 rounded-lg p-2 text-white hover:bg-gray-700 transition duration-300 font-semibold">
+            <button type="submit" className="w-full bg-gray-600 rounded-lg p-2 text-white hover:bg-gray-700 transition duration-300 font-semibold">
               Sign Up
             </button>
           </form>

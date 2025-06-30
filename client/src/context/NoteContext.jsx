@@ -31,15 +31,18 @@ export const NoteProvider = ({ children }) => {
   };
 
   const fetchNotes = async () => {
-    try {
-      const res = await getAlNotes();
+    const token = localStorage.getItem("token");
+    if (token) {
+      try {
+        const res = await getAlNotes();
 
-      if (res.status == 200) {
-        console.log("fetched all notes", res.data);
-        setNotes(res.data);
+        if (res.status == 200) {
+          console.log("fetched all notes", res.data);
+          setNotes(res.data);
+        }
+      } catch (error) {
+        alert(error);
       }
-    } catch (error) {
-      alert(error);
     }
   };
 
@@ -60,7 +63,7 @@ export const NoteProvider = ({ children }) => {
         setIsEditing,
         note,
         setEditId,
-        editId
+        editId,
       }}
     >
       {children}

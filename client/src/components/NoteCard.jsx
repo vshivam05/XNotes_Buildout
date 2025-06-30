@@ -26,7 +26,7 @@ const NoteCard = ({ data, handleDelete }) => {
 
         {/* buttons */}
         <div className=" flex gap-4 justify-end flex-wrap">
-          <button
+          <button type="button"
             className="  border border-indigo-500 rounded-md bg-gray-800"
             onClick={() => {
               handleView(data);
@@ -37,7 +37,7 @@ const NoteCard = ({ data, handleDelete }) => {
               <FaRegEdit /> View/Edit
             </span>
           </button>
-          <button
+          <button type="button"
             className="p-2 border border-indigo-500 rounded-md bg-gray-800"
             onClick={() => {
               handleDelete(data._id);
@@ -48,7 +48,7 @@ const NoteCard = ({ data, handleDelete }) => {
               <MdDelete /> Delete
             </span>
           </button>
-          <button className="p-2 border border-indigo-500 rounded-md bg-gray-800">
+          <button type="button" className="p-2 border border-indigo-500 rounded-md bg-gray-800">
             <span className="px-2 flex gap-2 items-center ">
               <MdOutlinePushPin /> Pin
             </span>

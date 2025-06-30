@@ -9,6 +9,7 @@ const Login = () => {
     password: "",
   });
 
+  
   const {login} = useAuth();
 
   const handleInputChange = (e) => {
@@ -79,7 +80,7 @@ const Login = () => {
               />
             </div>
 
-            <button className="w-full bg-gray-600 rounded-lg p-2 text-white hover:bg-gray-700 transition duration-300 font-semibold">
+            <button type="submit" className="w-full bg-gray-600 rounded-lg p-2 text-white hover:bg-gray-700 transition duration-300 font-semibold">
               Log In
             </button>
           </form>
