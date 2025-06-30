@@ -4,6 +4,7 @@ const NoteContext = createContext();
 
 export const NoteProvider = ({ children }) => {
   const [notes, setNotes] = useState([]);
+  const [pin, setPin] = useState(false);
   const [note, setNote] = useState({
     title: "",
     description: "",
@@ -64,6 +65,8 @@ export const NoteProvider = ({ children }) => {
         note,
         setEditId,
         editId,
+        setPin,
+        pin,
       }}
     >
       {children}

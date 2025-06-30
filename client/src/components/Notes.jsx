@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNote } from "../context/NoteContext";
-import { useState } from "react";
-import { getAlNotes, DeleteService } from "../Services/api";
+// import { useState } from "react";
+import { DeleteService } from "../Services/api";
 import NoteCard from "./NoteCard";
 import View from "./View";
 const Notes = () => {
@@ -28,16 +28,12 @@ const Notes = () => {
     fetchNotes();
   };
 
-  // useEffect(()=>{
-
-  // })
-
   return (
     <>
       <div className=" w-screen  overflow-hidden my-2  px-4  md:w-full md:mx-auto md:px-0">
         <div className="notes-section md:max-w-full flex flex-col   rounded-2xl shadow-lg md:px-40  my-10">
           {isEditing && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+            <div className="modal fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
               <View />
             </div>
           )}
@@ -100,12 +96,23 @@ const Notes = () => {
 
           <div className="flex flex-col w-full">
             <h1 className="text-white py-2 font-bold">My Notes</h1>
-
-            {notes.map((note, index) => (
-              // <h1 key={index}>{console.log(note.title)}</h1>
-              // Assuming each note has a 'title' field
-              <NoteCard data={note} key={index} handleDelete={handleDelete} />
-            ))}
+            {notes.length > 0 ? (
+              <div className="">
+                {notes.map((note, index) => (
+                  // <h1 key={index}>{console.log(note.title)}</h1>
+                  // Assuming each note has a 'title' field
+                  <NoteCard
+                    data={note}
+                    key={index}
+                    handleDelete={handleDelete}
+                  />
+                ))}
+              </div>
+            ) : (
+              <p className=" w-full bg-blue-200 p-2 rounded-md">
+                No notes available
+              </p>
+            )}
           </div>
         </div>
       </div>

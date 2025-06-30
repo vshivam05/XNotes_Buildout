@@ -3,6 +3,7 @@ import { useNote } from "../context/NoteContext";
 import { EditService } from "../Services/api";
 const View = () => {
   const [edit, setEdit] = useState(false)
+  
   const { setIsEditing, note, setNote, editId, setEditId, fetchNotes } =
     useNote();
   // console.log(note);
@@ -33,8 +34,8 @@ const View = () => {
   };
 
   return (
-    <div>
-      <div className="w-[500px] bg-gray-100  rounded-md p-2">
+    <div className="">
+      <div className="  w-[500px] bg-gray-100  rounded-md p-2">
         <h1 className=" font-bold text-center pt-2 ">This is a new Note.</h1>
         <hr className="border-t-2 border-gray-500 my-4" />
 
