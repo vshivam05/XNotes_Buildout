@@ -107,7 +107,7 @@ const Notes = () => {
                     handleDelete={handleDelete}
                   />
                 ))}
-              </div>
+              </div> 
             ) : (
               <p className=" w-full bg-blue-200 p-2 rounded-md">
                 No notes available
