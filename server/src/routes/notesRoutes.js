@@ -4,7 +4,8 @@ import {
   updateNotesController,
   getAllNotesController,
   deleteNoteController,
-  pinNoteController
+  pinNoteController,
+  getUsersNotes,
 } from "../controllers/notesController.js";
 const router = express.Router();
 
@@ -19,6 +20,9 @@ router.put("/:note_id", auth, updateNotesController);
 
 // //get all notes
 router.get("/", auth, getAllNotesController);
+
+// get note for user
+router.get("/id", auth, getUsersNotes);
 
 // // delete notes
 

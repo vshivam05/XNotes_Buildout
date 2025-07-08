@@ -37,6 +37,18 @@ export const getAllNoteService = async () => {
   }
 };
 
+export const getUserNotesService = async (id) => {
+  try {
+const findNotes = await Note.find({user:id})
+
+console.log("from the service of userNotes",findNotes)
+
+    return findNotes;
+  } catch (error) {
+    return error;
+  }
+};
+
 export const deleteNoteService = async (id) => {
   try {
     const result = await Note.findByIdAndDelete(id);
@@ -54,19 +66,18 @@ export const deleteNoteService = async (id) => {
 export const pinNoteservice = async (id) => {
   try {
     const findNote = await Note.findById(id);
-console.log("note exist from Pinservice", findNote);
+    console.log("note exist from Pinservice", findNote);
     if (!findNote) {
       return null;
     }
-      const result = await Note.findByIdAndUpdate(
+    const result = await Note.findByIdAndUpdate(
       id,
       { pinned: !findNote.pinned }, // ✅ toggle the value
       {
-        new: true,             
-        runValidators: true    
+        new: true,
+        runValidators: true,
       }
     );
-
 
     return result;
   } catch (error) {

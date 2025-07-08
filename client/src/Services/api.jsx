@@ -48,7 +48,7 @@ export const getAlNotes = async () => {
   const token = localStorage.getItem("token");
 
   try {
-    const res = await axios.get(`${API_URL}/notes`, {
+    const res = await axios.get(`${API_URL}/notes/id`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

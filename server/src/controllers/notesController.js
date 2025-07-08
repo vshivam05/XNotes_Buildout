@@ -6,6 +6,7 @@ import {
   getAllNoteService,
   deleteNoteService,
   pinNoteservice,
+  getUserNotesService,
 } from "../services/noteService.js";
 
 export const createNotes = async (req, res) => {
@@ -57,6 +58,19 @@ export const getAllNotesController = async (req, res) => {
   }
 };
 
+export const getUsersNotes = async (req, res) => {
+  const  id  = req.user.userId;
+  
+  console.log("from the getusernotes controller id",id)
+  try {
+    const result = await getUserNotesService(id);
+    console.log("from the getAll note controller", result);
+    return res.status(200).json(result);
+  } catch (error) {
+    return res.status(400).json({ message: error });
+  }
+};
+
 export const deleteNoteController = async (req, res) => {
   const { note_id } = req.params;
 
@@ -75,7 +89,7 @@ export const deleteNoteController = async (req, res) => {
 
 export const pinNoteController = async (req, res) => {
   const { note_id } = req.params;
-console.log("note id", note_id)
+  console.log("note id", note_id);
   try {
     const result = await pinNoteservice(note_id);
 
