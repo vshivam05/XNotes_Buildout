@@ -1,6 +1,6 @@
 const API_URL = `http://localhost:5000/api`;
 // const API_URL = `https://xnotes-buildout.onrender.com/api`;
-
+//dummy
 import axios from "axios";
 import { useEffect } from "react";
 
@@ -55,6 +55,8 @@ export const getAlNotes = async () => {
     });
 
     return res;
+
+
   } catch (error) {
     console.log(error);
     throw error;
